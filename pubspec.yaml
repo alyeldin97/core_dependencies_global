@@ -10,8 +10,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-
+  flutter_svg:
+  cached_network_image:
+  flutter_screenutil:
+  shimmer:
 
 dev_dependencies:
   flutter_test:
