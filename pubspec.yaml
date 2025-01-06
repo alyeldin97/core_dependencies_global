@@ -10,9 +10,16 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-
-
+  flutter_svg:
+  cached_network_image:
+  flutter_screenutil:
+  shimmer:
+  flutter_secure_storage:
+  shared_preferences:
+  dio:
+  pretty_dio_logger:
+  page_transition:
+  equatable:
 dev_dependencies:
   flutter_test:
     sdk: flutter
