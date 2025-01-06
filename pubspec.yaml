@@ -18,6 +18,7 @@ dependencies:
   shared_preferences:
   dio:
   pretty_dio_logger:
+  page_transition:
   equatable:
 dev_dependencies:
   flutter_test:
