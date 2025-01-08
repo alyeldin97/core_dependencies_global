@@ -12,6 +12,7 @@ export 'ui_utilities/divider.dart';
 export 'ui_utilities/text_field.dart';
 export 'ui_utilities/dialog.dart';
 export 'ui_utilities/app_container.dart';
+export 'ui_utilities/image_picker.dart';
 
 
 
