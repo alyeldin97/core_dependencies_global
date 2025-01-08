@@ -1,69 +1,52 @@
 import 'dart:io';
+ import 'package:core_dependencies_global/core_dependencies_global.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-class ImagePickerService extends StatefulWidget {
+
+class ImagePickerService extends StatelessWidget {
   final Function(File?) onImagePicked;
 
-  // final String buttonText;
+
   final Widget? buttonText;
   final Widget? buttonGalleryText;
 
-  const ImagePickerService({
+  ImagePickerService({
     super.key,
     required this.onImagePicked,
     this.buttonText,
     this.buttonGalleryText,
   });
 
-  @override
-  _ImagePickerServiceState createState() => _ImagePickerServiceState();
-}
-
-class _ImagePickerServiceState extends State<ImagePickerService> {
   File? _selectedImage;
+
   final ImagePicker _picker = ImagePicker();
 
   Future<void> _pickImage(ImageSource source) async {
     final pickedFile = await _picker.pickImage(source: source);
 
     if (pickedFile != null) {
-      setState(() {
-        _selectedImage = File(pickedFile.path);
-      });
-      widget.onImagePicked(_selectedImage);
+      onImagePicked(_selectedImage);
     } else {
-      widget.onImagePicked(null);
+      onImagePicked(null);
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        if (_selectedImage != null)
-          Image.file(
-            _selectedImage!,
-            width: 100,
-            height: 100,
-            fit: BoxFit.cover,
-          ),
-        const SizedBox(height: 10),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton.icon(
-              onPressed: () => _pickImage(ImageSource.camera),
-              icon: const Icon(Icons.camera_alt),
-              label: widget.buttonText ?? Text("Take a Photo"),
-            ),
-            const SizedBox(width: 10),
-            ElevatedButton.icon(
-              onPressed: () => _pickImage(ImageSource.gallery),
-              icon: const Icon(Icons.photo),
-              label: widget.buttonGalleryText ?? Text("Choose from Gallery"),
-            ),
-          ],
+        ElevatedButton.icon(
+          onPressed: () => _pickImage(ImageSource.camera),
+          icon: const Icon(Icons.camera_alt),
+          label: buttonText ?? const Text("Take a Photo"),
+        ),
+        10.widthBox___________________________(),
+        ElevatedButton.icon(
+          onPressed: () => _pickImage(ImageSource.gallery),
+          icon: const Icon(Icons.photo),
+          label: buttonGalleryText ?? const Text("Choose from Gallery"),
         ),
       ],
     );
