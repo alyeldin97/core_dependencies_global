@@ -18,7 +18,7 @@ class TokenServiceImpl extends TokenService {
   Future<String?> getAccessToken() async {
     if (_accessToken == null) {
       final secureStorageKey =
-      await _appSecureStorage.getString(key: _accessTokenKey);
+          await _appSecureStorage.getString(key: _accessTokenKey);
 
       if (secureStorageKey == null) {
         return Future.value(null);
@@ -43,13 +43,16 @@ class TokenServiceImpl extends TokenService {
     _accessToken = null;
 
     final secureStorageKey =
-    await _appSecureStorage.getString(key: _accessTokenKey);
+        await _appSecureStorage.getString(key: _accessTokenKey);
 
     if (secureStorageKey != null) {
       await _appSecureStorage.removeValue(key: secureStorageKey);
     }
 
-    return _appSecureStorage.removeValue(key: _accessTokenKey);
+    final hasRemoved =
+        await _appSecureStorage.removeValue(key: _accessTokenKey);
+
+    return hasRemoved ?? false;
   }
 
   @override
@@ -62,20 +65,23 @@ class TokenServiceImpl extends TokenService {
     _refreshToken = null;
 
     final secureStorageKey =
-    await _appSecureStorage.getString(key: _refreshTokenKey);
+        await _appSecureStorage.getString(key: _refreshTokenKey);
 
     if (secureStorageKey != null) {
       await _appSecureStorage.removeValue(key: secureStorageKey);
     }
 
-    return _appSecureStorage.removeValue(key: _refreshTokenKey);
+    final hasRemoved =
+        await _appSecureStorage.removeValue(key: _refreshTokenKey);
+
+    return hasRemoved ?? false;
   }
 
   @override
   Future<String?> getRefreshToken() async {
     if (_refreshToken == null) {
       final secureStorageKey =
-      await _appSecureStorage.getString(key: _refreshTokenKey);
+          await _appSecureStorage.getString(key: _refreshTokenKey);
 
       if (secureStorageKey == null) {
         return Future.value(null);
