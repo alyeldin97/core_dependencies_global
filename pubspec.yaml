@@ -19,6 +19,7 @@ dependencies:
   dio:
   pretty_dio_logger:
   page_transition:
+  image_picker:
   equatable:
 dev_dependencies:
   flutter_test:
