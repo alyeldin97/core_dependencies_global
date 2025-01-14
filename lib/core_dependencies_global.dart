@@ -1,5 +1,4 @@
 // Services
-export 'services/network_service.dart';
 export 'services/navigation/navigation_service.dart';
 
 // Utilities

@@ -213,3 +213,75 @@ class DioNetworkServiceImpl implements NetworkService {
     return requestHeaders;
   }
 }
+
+class DummyNetworkService implements NetworkService {
+  @override
+  Future<List<T>> getList<T>(
+    String path, {
+    required JsonConverterResponse<T> fromMap,
+    String? key,
+    Map<String, dynamic>? queryParameters,
+  }) async {
+    await _delay();
+    return List.generate(
+            10, (index) => fromMap({"sad": "adsdsa"} as Map<String, dynamic>))
+        .toList();
+  }
+
+  @override
+  Future<T> get<T>(
+    String path, {
+    required JsonConverterResponse<T> fromMap,
+    Map<String, dynamic>? queryParameters,
+  }) async {
+    await _delay();
+
+    return fromMap({"sad": "adsdsa"} as Map<String, dynamic>) as Future<T>;
+  }
+
+  @override
+  Future<T> post<T>(
+    String path, {
+    dynamic data,
+    required JsonConverterResponse<T> fromMap,
+  }) async {
+    await _delay();
+
+    return fromMap({"sad": "adsdsa"} as Map<String, dynamic>) as Future<T>;
+  }
+
+  @override
+  Future<T> put<T>(
+    String path, {
+    dynamic data,
+    required JsonConverterResponse<T> fromMap,
+  }) async {
+    await _delay();
+
+    return fromMap({"sad": "adsdsa"} as Map<String, dynamic>) as Future<T>;
+  }
+
+  @override
+  Future<T> delete<T>(
+    String path, {
+    required JsonConverterResponse<T> fromMap,
+  }) async {
+    await _delay();
+
+    return fromMap({"sad": "adsdsa"} as Map<String, dynamic>) as Future<T>;
+  }
+
+  @override
+  Future<T> uploadFile<T>(
+    String path, {
+    required JsonConverterResponse<T> fromMap,
+    File? file,
+  }) async {
+    await _delay();
+    return fromMap({"sad": "adsdsa"} as Map<String, dynamic>) as Future<T>;
+  }
+
+  _delay() async {
+    await Future.delayed(Duration(seconds: 1));
+  }
+}
