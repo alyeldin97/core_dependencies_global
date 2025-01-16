@@ -4,45 +4,56 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'local_storage_service.dart';
 
 class LocalStorageServiceImpl implements LocalStorageService {
-  LocalStorageServiceImpl(this._sharedPreferences);
-  final SharedPreferences _sharedPreferences;
+  SharedPreferences? _sharedPreferences;
+  LocalStorageServiceImpl();
 
-  @override
-  Future<void> saveString({required String key, required String value}) async {
-    _sharedPreferences.setString(key, value);
+  init() async {
+    _sharedPreferences = await SharedPreferences.getInstance();
   }
 
   @override
-  String? getString({required String key, String? defaultValue}) {
-    return _sharedPreferences.getString(key) ?? defaultValue;
+  Future<void> saveString({required String key, required String value}) async {
+    if (_sharedPreferences == null) await init();
+    _sharedPreferences?.setString(key, value);
+  }
+
+  @override
+  Future<String?> getString({required String key, String? defaultValue}) async {
+    if (_sharedPreferences == null) await init();
+    return _sharedPreferences?.getString(key) ?? defaultValue;
   }
 
   @override
   Future<void> saveInt({required String key, required int value}) async {
-    _sharedPreferences.setInt(key, value);
+    if (_sharedPreferences == null) await init();
+    _sharedPreferences?.setInt(key, value);
   }
 
   @override
-  int? getInt({required String key, int? defaultValue}) {
-    return _sharedPreferences.getInt(key) ?? defaultValue;
+  Future<int?> getInt({required String key, int? defaultValue}) async {
+    if (_sharedPreferences == null) await init();
+    return _sharedPreferences?.getInt(key) ?? defaultValue;
   }
 
   @override
   Future<void> saveMap(
       {required String key, required Map<String, dynamic> jsonMap}) async {
-    await _sharedPreferences.setString(key, json.encode(jsonMap));
+    if (_sharedPreferences == null) await init();
+    await _sharedPreferences?.setString(key, json.encode(jsonMap));
   }
 
   @override
-  Future<bool> removeValue({required String key}) async {
-    return _sharedPreferences.remove(key);
+  Future<bool?> removeValue({required String key}) async {
+    if (_sharedPreferences == null) await init();
+    return _sharedPreferences?.remove(key);
   }
 
   @override
-  Map<String, dynamic>? getMap<T>({required String key}) {
-    final String? value = _sharedPreferences.getString(key);
+  Future<Map<String, dynamic>?> getMap<T>({required String key}) async {
+    if (_sharedPreferences == null) await init();
+    final String? value = _sharedPreferences?.getString(key);
     if (value != null) {
-      return json.decode(_sharedPreferences.getString(key)!)
+      return json.decode(_sharedPreferences?.getString(key) ?? '')
           as Map<String, dynamic>;
     } else {
       return null;
@@ -50,13 +61,17 @@ class LocalStorageServiceImpl implements LocalStorageService {
   }
 
   @override
-  bool? getBool({required String key, bool? defaultValue}) {
-    return _sharedPreferences.getBool(key) ?? defaultValue;
+  Future<bool?> getBool({required String key, bool? defaultValue}) async {
+    if (_sharedPreferences == null) await init();
+
+    return _sharedPreferences?.getBool(key) ?? defaultValue;
   }
 
   @override
   Future<void> saveBool({required String key, required bool value}) async {
-    await _sharedPreferences.setBool(key, value);
+    if (_sharedPreferences == null) await init();
+
+    await _sharedPreferences?.setBool(key, value);
   }
 }
 

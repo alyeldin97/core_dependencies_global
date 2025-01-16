@@ -7,9 +7,10 @@ abstract class LocalStorageService {
 
   getInt({required String key, int? defaultValue});
 
-  Future<bool> removeValue({required String key});
+  Future<bool?> removeValue({required String key});
 
-  Future<void> saveMap({required String key, required Map<String, dynamic> jsonMap});
+  Future<void> saveMap(
+      {required String key, required Map<String, dynamic> jsonMap});
 
   getMap<T>({required String key});
 

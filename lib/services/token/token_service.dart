@@ -3,7 +3,7 @@ abstract class TokenService {
 
   Future<void> setAccessToken(String accessToken);
 
-  Future<bool> clearAccessToken();
+  Future<bool?> clearAccessToken();
 
   Future<String?> getRefreshToken();
 
