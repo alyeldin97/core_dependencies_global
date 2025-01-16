@@ -236,7 +236,7 @@ class DummyNetworkService implements NetworkService {
   }) async {
     await _delay();
 
-    return fromMap({"sad": "adsdsa"} as Map<String, dynamic>) as Future<T>;
+    return fromMap({"sad": "adsdsa"} as Map<String, dynamic>);
   }
 
   @override
@@ -247,7 +247,7 @@ class DummyNetworkService implements NetworkService {
   }) async {
     await _delay();
 
-    return fromMap({"sad": "adsdsa"} as Map<String, dynamic>) as Future<T>;
+    return fromMap({"sad": "adsdsa"} as Map<String, dynamic>);
   }
 
   @override
@@ -258,7 +258,7 @@ class DummyNetworkService implements NetworkService {
   }) async {
     await _delay();
 
-    return fromMap({"sad": "adsdsa"} as Map<String, dynamic>) as Future<T>;
+    return fromMap({"sad": "adsdsa"} as Map<String, dynamic>);
   }
 
   @override
@@ -268,7 +268,7 @@ class DummyNetworkService implements NetworkService {
   }) async {
     await _delay();
 
-    return fromMap({"sad": "adsdsa"} as Map<String, dynamic>) as Future<T>;
+    return fromMap({"sad": "adsdsa"} as Map<String, dynamic>);
   }
 
   @override
@@ -278,7 +278,7 @@ class DummyNetworkService implements NetworkService {
     File? file,
   }) async {
     await _delay();
-    return fromMap({"sad": "adsdsa"} as Map<String, dynamic>) as Future<T>;
+    return fromMap({"sad": "adsdsa"} as Map<String, dynamic>);
   }
 
   _delay() async {
