@@ -38,7 +38,7 @@ class LoadingListview extends StatelessWidget {
               width: widthContainer ?? 150,
               height: heightContainer ?? 120,
               borderRadius: 10,
-              isElevated: true,
+
             ); // replace this with your actual loading widget
           },
         ),
