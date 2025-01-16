@@ -15,7 +15,7 @@ class LoadingContainer extends StatelessWidget {
         width: double.infinity,
         height: 100,
         borderRadius: 10,
-        isElevated: true,
+
       ),
     );
   }

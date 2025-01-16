@@ -30,7 +30,7 @@ class LoadingGrid extends StatelessWidget {
                 width: 50,
                 height: 50,
                 borderRadius: 10,
-                isElevated: true,
+
               ),
             ),
           );
