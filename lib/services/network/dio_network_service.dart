@@ -282,6 +282,6 @@ class DummyNetworkService implements NetworkService {
   }
 
   _delay() async {
-    await Future.delayed(Duration(seconds: 1));
+    await Future.delayed(Duration(seconds: 3));
   }
 }
