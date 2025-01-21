@@ -13,6 +13,7 @@ class LoadingListview extends StatelessWidget {
     this.heightContainer,
     this.widthContainer,
     this.separatorBuilder,
+    this.count = 6,
   });
 
   final double? height;
@@ -20,18 +21,19 @@ class LoadingListview extends StatelessWidget {
   final double? heightContainer;
   final double? widthContainer;
   final Widget? separatorBuilder;
+  final int count;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: height ?? 210.h,
+      height: (height ?? 210).h,
       child: Shimmer.fromColors(
         baseColor: Colors.grey[300]!,
         highlightColor: Colors.grey[100]!,
         child: ListView.separated(
           scrollDirection: scrollDirection,
           shrinkWrap: true,
-          itemCount: 6,
+          itemCount: count,
           separatorBuilder: (context, index) =>
               (scrollDirection == Axis.horizontal)
                   ? 20.widthBox___________________________()
