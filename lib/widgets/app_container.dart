@@ -34,8 +34,8 @@ class AppContainer extends StatelessWidget {
     this.topMargin = 0.0,
     this.isElevated = false,
     this.color = Colors.white,
-    this.shadowColor ,
-    this.borderColor,
+    this.shadowColor,
+    this.borderColor = Colors.transparent,
     this.topPadding = 0.0,
     this.endMargin = 0.0,
     this.endPadding = 0.0,
@@ -85,7 +85,7 @@ class AppContainer extends StatelessWidget {
                 ],
           color: color,
           border: borderColor == null
-              ? Border.all(color:borderColor!)
+              ? Border.all(color: borderColor!)
               : Border.all(color: borderColor!),
           borderRadius: isCircle ? null : BorderRadius.circular(borderRadius!),
         ),
