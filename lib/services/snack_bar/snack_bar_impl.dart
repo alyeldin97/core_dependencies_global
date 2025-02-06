@@ -4,15 +4,21 @@ import 'package:get/get.dart';
 
 class SnackBarImpl implements SnackBarService {
   @override
-  void showSnackBar(String message, Color? backgroundColor, Color? textColor,
-      SnackPosition? position, String? title) {
+  void showSnackBar({
+    String? message,
+    Color? backgroundColor,
+    Color? textColor,
+    SnackPosition? position,
+    String? title,
+    Duration? duration,
+  }) {
     Get.snackbar(
       title ?? 'Success',
-      message,
+      message ?? '',
       snackPosition: position ?? SnackPosition.BOTTOM,
       backgroundColor: backgroundColor ?? Colors.green,
       colorText: textColor ?? Colors.white,
-      duration: Duration(seconds: 3),
+      duration: duration ?? Duration(seconds: 3),
     );
   }
 }
